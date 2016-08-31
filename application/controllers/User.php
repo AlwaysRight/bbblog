@@ -9,33 +9,23 @@ class User extends CI_Controller{
 
     public function index(){
 
-        print_r( $this->user_model->add("bb", "beibi", "798386353@qq.com"));
+       // print_r( $this->user_model->add("bb", "beibi", "798386353@qq.com"));
     }
 
-    public function login(){
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $attributes = array('class' => 'form-signin', 'id' => 'loginForm');
+    public function login()
+    {
 
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
-
-
-        if ($this->form_validation->run() === FALSE)
-        {
-
-            $this->load->view('user/login', $attributes);
-
-        }
-        else
-        {
-            $username = $this->input->post('username');
-            $password_f = $this->input->post('password');
-           // $password = $this->system_security->hash_password($username,$password_f);
-            if($this->user_model->login($username,$password_f)['rs'] === "success"){
-                $this->load->view('user/success');
-            }
-            else $this->load->view('user/error');
-        }
+        $this->load->view('user/login');
     }
+
+    public function checkLogin()
+    {
+        $username = $this->input->post('username');
+        var_dump($username);
+        $password_f = $this->input->post('password');
+        if ($this->user_model->login($username, $password_f)['rs'] === "success") {
+            $this->load->view('user/success');
+        } else $this->load->view('user/error');
+    }
+
 }
