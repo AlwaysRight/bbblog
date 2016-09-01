@@ -36,6 +36,7 @@ class User_model extends CI_Model
         $this->db->where(array(self::$COL_NAME=>$username));
         $this->db->where(array(self::$COL_PWD=>$password));
         $q = $this->db->get(self::$DB);
+
         if($q->num_rows() > 0) {
             return array("rs" => "success","data"=>$q->first_row());
         }

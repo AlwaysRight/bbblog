@@ -21,7 +21,7 @@
 <body>
 
 <div class="container">
-    <form class="form-signin" action="">
+    <form class="form-signin" action="index.php?c=User&m=checkLogin" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUsername" class="sr-only">Username</label>
         <input type="username" id="username" name = "username" class="form-control" placeholder="Username" required autofocus>
